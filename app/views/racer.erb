@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <head>
+  <body>
+    <h2>Let the games begin</h2>
+    </br>
+    <table class="racer_table" style=display:inline-block>
+      <tr id="player1_strip">
+        <td class="active">Q</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="player2_strip">
+        <td class="active">P</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+      <table style=display:inline-block>
+        <tr style=height:20px>
+          <td id="player1"><%= @player[1].name %></td>
+        </tr>
+        <tr style=height:20px>
+          <td id="player2"><%= @player[2].name %></td>
+        </tr>
+      </table>
+      </br>
+
+    Time: <div id="time">0</div></br>
+    <h2 style=color:red id=announcements></h2>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

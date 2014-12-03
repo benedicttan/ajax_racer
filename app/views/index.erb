@@ -1,0 +1,30 @@
+<h2>Names please</h2>
+<form method=post action="/start">
+  Player 1: <input type=text name="player[1]"></br>
+  Player 2: <input type=text name="player[2]"></br>
+  </br>
+  <input type=submit value="Start a game">
+</form>
+</br>
+</br>
+<table border=1>
+  <tr>
+    <td>id</td>
+    <td>Winner</td>
+    <td>Competitor</td>
+    <td>Time</td>
+  </tr>
+<% Game.all.each do |game| %>
+  <tr>
+    <td><a href="/game/<%= game.id %>"><%= game.id %></a></td>
+    <td><%= Player.find(game.winner_id).name %></td>
+    <% if PlayerGame.where(game_id: game.id)[0].player == Player.find(game.winner_id) %>
+      <td><%= PlayerGame.where(game_id: game.id)[1].player.name %></td>
+    <% else %>
+      <td><%= PlayerGame.where(game_id: game.id)[0].player.name %></td>
+    <% end %>
+
+    <td><%= game.time %></td>
+  </tr>
+<% end %>
+</table>

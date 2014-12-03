@@ -1,0 +1,13 @@
+<% if @message %>
+  <h2 style=color:red><%= @message %></h2>
+<% end %>
+</br>
+<form method=post action="/restart">
+  <input type=submit value="Restart" id="restart">
+</form>
+  </br>
+
+<form method=post action="/">
+  <input type=submit value="New game" id="newgame">
+</form>
+</br>
