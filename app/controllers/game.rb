@@ -30,11 +30,16 @@ end
 
 post '/results' do
   this_game = Game.last
-  this_game.winner_id = Player.where(name: params["winner"]).first.id
+  case params["winner"]
+  when "1"
+    winner_name = PlayerGame.where(game_id: this_game.id)[0].player.name
+  when "2"
+    winner_name = PlayerGame.where(game_id: this_game.id)[1].player.name
+  end
+  this_game.winner_id = Player.where(name: winner_name).first.id
   this_game.time = params["time"].to_f
   this_game.save
-  # Game.last.save
-  @message = params["winner"] << " won with time " << params["time"] << " second(s)"
+  @message = winner_name << " won with time " << params["time"] << " second(s)"
   erb :results
 end
 
